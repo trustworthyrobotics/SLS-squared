@@ -27,10 +27,13 @@ reacher/models/lewm_reacher*/
 **/runs/
 **/__pycache__/
 reacher/models/sam3
-stuff/error_model/error_model.egg-info
-stuff/error_model/lightning_logs
+error_calib/error_model/error_model.egg-info
+error_calib/error_model/lightning_logs
 reacher/plan/sls_mpc_conformal
 reacher/plan/sls_mpc_cross_latent
 reacher/data/test_data_50hz
 rope/plan/sls_mpc_conformal
 ogbench_cube/plan/sls_mpc_conformal
+
+!docs/assets/paper/*.pdf
+!docs/assets/videos/*.mp4
