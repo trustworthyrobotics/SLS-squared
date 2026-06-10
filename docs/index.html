@@ -7,193 +7,261 @@
       name="description"
       content="SLS2: probabilistically safe latent-space planning from pixels with conformalized robust MPC."
     >
+    <meta property="og:title" content="SLS2: Safe Latent Space Planning">
+    <meta
+      property="og:description"
+      content="Pixels to Proofs: Probabilistically-Safe Control in Latent World Models via Conformalized Robust MPC"
+    >
+    <meta property="og:type" content="website">
     <title>SLS2: Safe Latent Space Planning</title>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
-    <header class="site-header">
-      <nav class="nav">
-        <a href="#method">Method</a>
-        <a href="#videos">Videos</a>
-        <a href="#code">Code</a>
-        <a href="#citation">Citation</a>
-      </nav>
-    </header>
-
     <main>
       <section class="hero">
-        <div class="hero-copy">
-          <p class="venue">CoRL 2026 Submission</p>
-          <h1>Pixels to Proofs: Probabilistically-Safe Control in Latent World Models via Conformalized Robust MPC</h1>
-          <p class="subtitle">
-            SLS2 learns compact Markov latent world models from pixels and plans with conformalized
-            System Level Synthesis to produce robust, safety-aware feedback control.
-          </p>
-          <div class="actions">
-            <a class="button primary" href="assets/paper/SLS2_paper.pdf">Paper PDF</a>
-            <a class="button" href="https://github.com/trustworthyrobotics/SLS-squared">Code</a>
+        <div class="container narrow">
+          <p class="venue">Preprint</p>
+          <!-- <h1><span>SLS<sup>2</sup></span>: Safe Latent Space Planning</h1> -->
+          <h2>
+            Pixels to Proofs: Probabilistically-Safe Control in Latent World Models
+            via Conformalized Robust MPC
+          </h2>
+
+          <div class="authors">
+            <p>
+              Devesh Nath<sup>*</sup>, Anutam Srinivasan<sup>*</sup>,
+              Haoran Yin<sup>*</sup>, Ruitong Jiang, Jeffrey Fang, Glen Chou
+            </p>
+            <p>Georgia Institute of Technology</p>
+            <p><sup>*</sup>Equal contribution, alphabetical ordering</p>
+          </div>
+
+          <div class="publication-links">
+            <a class="button" href="assets/paper/SLS2_paper.pdf">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+                <path d="M16 13H8"></path>
+                <path d="M16 17H8"></path>
+                <path d="M10 9H8"></path>
+              </svg>
+              <span>Paper</span>
+            </a>
+            <a class="button" href="https://github.com/trustworthyrobotics/SLS-squared">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+              <span>Code</span>
+            </a>
           </div>
         </div>
+      </section>
 
-        <div class="hero-media">
-          <video autoplay muted loop playsinline aria-label="SLS2 rollout overview video">
+      <section class="section teaser">
+        <div class="container">
+          <video autoplay muted loop playsinline controls>
             <source src="assets/videos/final_paper_ready_video_2_stacked.mp4" type="video/mp4">
           </video>
         </div>
       </section>
 
-      <section class="content-section" id="abstract">
-        <h2>Abstract</h2>
-        <p>
-          We present SLS2, a framework for safe feedback motion planning from pixels using robust
-          model predictive control in learned latent world models. The approach trains an
-          action-conditioned joint-embedding world model with compact Markovian latent states,
-          enabling efficient gradient-based trajectory optimization through learned latent dynamics.
-          To enforce safety despite imperfect latent predictions, SLS2 uses conformal prediction to
-          calibrate latent error bounds and robust latent-space constraint sets, then plans with a
-          GPU-accelerated System Level Synthesis robust MPC scheme. We further learn and
-          conformalize latent constraint checkers so task constraints can be enforced during
-          closed-loop execution.
-        </p>
-      </section>
-
-      <section class="content-section method" id="method">
-        <h2>Method</h2>
-        <div class="method-grid">
-          <article>
-            <span>1</span>
-            <h3>Learn Latent Dynamics</h3>
-            <p>
-              RGB observations are encoded into compact embeddings. Markov latent states combine
-              the current embedding with finite-difference latent features, and an MLP predicts
-              action-conditioned latent transitions.
-            </p>
-          </article>
-          <article>
-            <span>2</span>
-            <h3>Calibrate Uncertainty</h3>
-            <p>
-              Held-out rollouts calibrate one-step latent prediction errors, in-distribution latent
-              ellipsoids, and task-specific latent safety classifiers with conformal prediction.
-            </p>
-          </article>
-          <article>
-            <span>3</span>
-            <h3>Plan with SLS</h3>
-            <p>
-              MPPI warm starts and GPU SLS robust MPC propagate conformal uncertainty sets into
-              reachable tubes, tightening constraints over the planning horizon.
-            </p>
-          </article>
+      <section class="section" id="abstract">
+        <div class="container narrow">
+          <h2>Abstract</h2>
+          <p>
+            We present SLS<sup>2</sup>, a framework for safe feedback motion planning
+            from pixels using robust model predictive control in learned latent world
+            models. Our approach trains an action-conditioned joint-embedding world
+            model with compact Markovian latent states, enabling efficient
+            gradient-based trajectory optimization through learned latent dynamics.
+            To enforce safety for the true system despite imperfect latent
+            predictions, we inform a GPU-accelerated System Level Synthesis robust
+            MPC scheme with conformal prediction to obtain calibrated latent error
+            bounds and robust latent-space constraint sets. We further learn and
+            conformalize a latent constraint checker, allowing the SLS planner to
+            impose probabilistic safety constraints during closed-loop execution.
+          </p>
+          <p class="tldr">
+            <strong>TL;DR:</strong> SLS<sup>2</sup> turns pixel observations into
+            robustly safe actions by planning in learned latent world models with
+            conformal uncertainty and SLS reachable tubes.
+          </p>
         </div>
       </section>
 
-      <section class="content-section" id="videos">
-        <h2>Videos</h2>
-        <p class="section-intro">
-          SLS2 is evaluated on vision-based manipulation and control tasks spanning bimanual rope
-          manipulation, planar reaching, OGBench cube transport, and PushT.
-        </p>
+      <section class="section" id="method">
+        <div class="container narrow">
+          <h2>Method</h2>
+          <p>
+            SLS<sup>2</sup> combines representation learning, conformal calibration,
+            and robust feedback synthesis. A JEPA-style encoder maps images into
+            compact embeddings, an MLP dynamics model predicts Markov latent-state
+            transitions, and conformal calibration converts held-out prediction
+            errors and learned constraint scores into planning-time uncertainty sets.
+            The robust MPC layer then uses GPU-accelerated System Level Synthesis to
+            propagate these uncertainty sets into reachable tubes and tighten
+            constraints over the horizon.
+          </p>
+        </div>
 
-        <div class="video-grid">
-          <article class="video-card wide">
-            <video controls muted loop playsinline>
-              <source src="assets/videos/final_paper_ready_video.mp4" type="video/mp4">
-            </video>
-            <div>
-              <h3>Overview</h3>
-              <p>Representative rollouts showing safe latent-space planning behavior across tasks.</p>
-            </div>
-          </article>
-
-          <article class="video-card">
-            <video controls muted loop playsinline>
-              <source src="assets/videos/reacher_comparison.mp4" type="video/mp4">
-            </video>
-            <div>
-              <h3>Reacher</h3>
-              <p>Joint-space safety constraints are enforced while the arm reaches the goal.</p>
-            </div>
-          </article>
-
-          <article class="video-card">
-            <video controls muted loop playsinline>
-              <source src="assets/videos/cube_comparison.mp4" type="video/mp4">
-            </video>
-            <div>
-              <h3>OGBench Cube</h3>
-              <p>The planner alters post-grasp behavior to satisfy a gripper-height constraint.</p>
-            </div>
-          </article>
-
-          <article class="video-card">
-            <video controls muted loop playsinline>
-              <source src="assets/videos/rope_comparison.mp4" type="video/mp4">
-            </video>
-            <div>
-              <h3>Rope</h3>
-              <p>Bimanual rope motions are planned with learned latent constraints.</p>
-            </div>
-          </article>
-
-          <article class="video-card">
-            <video controls muted loop playsinline>
-              <source src="assets/videos/pusht_comparison.mp4" type="video/mp4">
-            </video>
-            <div>
-              <h3>PushT</h3>
-              <p>Latent world-model planning for planar manipulation from image observations.</p>
-            </div>
-          </article>
+        <div class="container narrow">
+          <figure class="pipeline-figure">
+            <img
+              src="assets/images/pipeline-diagram.png"
+              alt="SLS squared pipeline diagram from pixels through latent world-model planning, conformal calibration, and robust SLS MPC."
+            >
+            <figcaption>
+              SLS<sup>2</sup> maps pixels to robustly safe actions through learned
+              latent dynamics, conformal calibration, and SLS tube synthesis.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      <section class="content-section">
-        <h2>Latent Tubes</h2>
-        <p class="section-intro">
-          The SLS planner propagates calibrated latent disturbances through the horizon to produce
-          reachable tubes. These visualizations show nominal latent rollouts and robust tube
-          envelopes used for constrained planning.
-        </p>
-        <div class="tube-grid">
-          <video controls muted loop playsinline>
-            <source src="assets/videos/mpc_plan_animation_combined_rope.mp4" type="video/mp4">
-          </video>
-          <video controls muted loop playsinline>
-            <source src="assets/videos/mpc_plan_animation_combined_cube.mp4" type="video/mp4">
-          </video>
-          <video controls muted loop playsinline>
-            <source src="assets/videos/mpc_plan_animation_combined.mp4" type="video/mp4">
-          </video>
+      <section class="section" id="results">
+        <div class="container narrow">
+          <h2>Nominal Planning Results</h2>
+          <p class="section">
+           Nominal planning from image observations across simulated
+            manipulation tasks and real bimanual rope hardware. Our Markov state approach enables us to capture motion data, while our gradient-based nominal iLQR planner is able to stably reach the goal image.
+          </p>
+
+          <div class="video-grid two-up">
+            <figure class="wide-video">
+              <video controls muted loop playsinline>
+                <source src="assets/videos/final_paper_ready_video.mp4" type="video/mp4">
+              </video>
+              <figcaption><b>Hardware Rope.</b> Real bimanual planning directly from pixels.</figcaption>
+            </figure>
+            <figure>
+              <video controls muted loop playsinline>
+                <source src="assets/videos/reacher_comparison.mp4" type="video/mp4">
+              </video>
+              <figcaption><b>Reacher.</b></figcaption>
+            </figure>
+            <figure>
+              <video controls muted loop playsinline>
+                <source src="assets/videos/cube_comparison.mp4" type="video/mp4">
+              </video>
+              <figcaption><b>OGBench Cube.</b></figcaption>
+            </figure>
+            <figure>
+              <video controls muted loop playsinline>
+                <source src="assets/videos/rope_comparison.mp4" type="video/mp4">
+              </video>
+              <figcaption><b>Rope.</b></figcaption>
+            </figure>
+            <figure>
+              <video controls muted loop playsinline>
+                <source src="assets/videos/pusht_comparison.mp4" type="video/mp4">
+              </video>
+              <figcaption><b>PushT.</b></figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
-      <section class="content-section code-links" id="code">
-        <h2>Code</h2>
-        <p>
-          The repository contains task-specific data generation, latent world-model training,
-          conformal calibration, obstacle-classifier training, and robust SLS planning scripts.
-        </p>
-        <a class="button primary" href="https://github.com/trustworthyrobotics/SLS-squared">
-          View Repository
-        </a>
+      <section class="section" id="robust-results">
+        <div class="container narrow">
+          <h2>Robust Planning Results</h2>
+          <p class="section">
+            SLS<sup>2</sup> propagates conformalized disturbances in the latent disturbances to provide robust constraint satisfaction. 
+            The visualizations below show the robust rollouts with the projected reachable-tube envelopes, compared with the unsafe nominal rollout. 
+            The table below demonstrates SLS<sup>2</sup> has a higher rate of successfully completing task while remaining safe. 
+          </p>
+          <div class="video-grid stacked">
+            <figure>
+              <video controls muted loop playsinline>
+                <source src="assets/videos/mpc_plan_animation_combined_rope.mp4" type="video/mp4">
+              </video>
+              <figcaption><b>Rope; Task:</b> Move the rope around the obstacle while reaching the goal. </figcaption>
+            </figure>
+            <figure>
+              <video controls muted loop playsinline>
+                <source src="assets/videos/mpc_plan_animation_combined_cube.mp4" type="video/mp4">
+              </video>
+              <figcaption><b>Cube; Task:</b> Keep the gripper below a height threshold after grasp, while maneuvering towards the goal.</figcaption>
+            </figure>
+            <figure class="half-width">
+              <video controls muted loop playsinline>
+                <source src="assets/videos/mpc_plan_animation_combined_reacher.mp4" type="video/mp4">
+              </video>
+              <figcaption><b>Reacher; Task:</b> Avoid unsafe joint-angle regions while reaching the goal.</figcaption>
+            </figure>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <caption>
+              Safety and robust success rates for SLS<sup>2</sup> and baseline safety methods.
+              </caption>
+              <thead>
+                <tr>
+                  <th rowspan="2">Task</th>
+                  <th colspan="3">Safety &#8593;</th>
+                  <th colspan="3">Robust Success &#8593;</th>
+                </tr>
+                <tr>
+                  <th>SLS<sup>2</sup></th>
+                  <th>HJ-filtered</th>
+                  <th>LPB</th>
+                  <th>SLS<sup>2</sup></th>
+                  <th>HJ-filtered</th>
+                  <th>LPB</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Reacher</td>
+                  <td><b>100.00%</b></td>
+                  <td><b>100.00%</b></td>
+                  <td>0.00%</td>
+                  <td><b>100.00%</b></td>
+                  <td><b>100.00%</b></td>
+                  <td>0.00%</td>
+                </tr>
+                <tr>
+                  <td>OGBench Cube</td>
+                  <td><b>94.29%</b></td>
+                  <td>0.00%</td>
+                  <td>0.00%</td>
+                  <td><b>94.29%</b></td>
+                  <td>0.00%</td>
+                  <td>0.00%</td>
+                </tr>
+                <tr>
+                  <td>Rope</td>
+                  <td><b>100.00%</b></td>
+                  <td>37.14%</td>
+                  <td>57.15%</td>
+                  <td><b>88.57%</b></td>
+                  <td>37.14%</td>
+                  <td>57.15%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
 
-      
-      <section class="content-section" id="citation">
-        <h2>Citation</h2>
-        <p>Please use the following placeholder while the paper is under review.</p>
-        <pre><code>@inproceedings{sls2_2026,
+      <section class="section" id="citation">
+        <div class="container narrow">
+          <h2>Citation</h2>
+          <pre><code>@misc{sls2_2026,
   title = {Pixels to Proofs: Probabilistically-Safe Control in Latent World Models via Conformalized Robust MPC},
-  author = {Anonymous Authors},
-  booktitle = {Submitted to the Conference on Robot Learning},
+  author = {Nath, Devesh and Srinivasan, Anutam and Yin, Haoran and Jiang, Ruitong and Fang, Jeffrey and Chou, Glen},
+  note = {Preprint},
   year = {2026}
 }</code></pre>
+        </div>
       </section>
     </main>
 
     <footer>
-      <p>SLS2: Safe Latent Space Planning from Pixels</p>
+      <div class="container">
+        <p>SLS<sup>2</sup>: Safe Latent Space Planning from Pixels</p>
+      </div>
     </footer>
   </body>
 </html>

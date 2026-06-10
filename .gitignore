@@ -37,3 +37,6 @@ ogbench_cube/plan/sls_mpc_conformal
 
 !docs/assets/paper/*.pdf
 !docs/assets/videos/*.mp4
+!docs/assets/images/*.png
+
+reference_files/
