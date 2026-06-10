@@ -248,12 +248,21 @@
       <section class="section" id="citation">
         <div class="container narrow">
           <h2>Citation</h2>
-          <pre><code>@misc{sls2_2026,
+          <div class="citation-box">
+            <button class="copy-button" type="button" data-copy-target="citation-code" aria-label="Copy citation">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy</span>
+            </button>
+            <pre><code id="citation-code">@misc{sls2_2026,
   title = {Pixels to Proofs: Probabilistically-Safe Control in Latent World Models via Conformalized Robust MPC},
   author = {Nath, Devesh and Srinivasan, Anutam and Yin, Haoran and Jiang, Ruitong and Fang, Jeffrey and Chou, Glen},
   note = {Preprint},
   year = {2026}
 }</code></pre>
+          </div>
         </div>
       </section>
     </main>
@@ -263,5 +272,47 @@
         <p>SLS<sup>2</sup>: Safe Latent Space Planning from Pixels</p>
       </div>
     </footer>
+    <script>
+      const videos = document.querySelectorAll("video");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+
+          if (entry.isIntersecting) {
+            video.play().catch(() => {
+              // Some browsers block autoplay until the user interacts with the page.
+            });
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      videos.forEach((video) => {
+        video.muted = true;
+        video.playsInline = true;
+        observer.observe(video);
+      });
+
+      document.querySelectorAll("[data-copy-target]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          const text = target?.innerText ?? "";
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const label = button.querySelector("span");
+            const original = label.textContent;
+            label.textContent = "Copied";
+            setTimeout(() => {
+              label.textContent = original;
+            }, 1600);
+          } catch {
+            button.blur();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
