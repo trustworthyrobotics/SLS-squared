@@ -1,0 +1,57 @@
+q_learned: 3.692610740661621
+model_dir: reacher/models/mlpdyn_ft_6
+error_model_ckpt: reacher/models/err_pred_logs/reacher_experiment_markov/version_0/checkpoints/best-error-model-epoch=3199.ckpt
+use_constant_covariance: false
+constant_covariance_path: reacher/eval/fixed_error_covariance.pt
+dataset_path: reacher/data/test_data_50hz/reacher_test.h5
+action_stats_dataset_path: reacher/data/expert_data_50hz/reacher_expert.h5
+out_dir: reacher/plan/sls_mppi_conformal_tube_vis
+device: auto
+episode_idx: 10
+start_goal_path: reacher/plan/start_goal.pt
+seed: 42
+horizon: 5
+mppi_horizon: 60
+max_mpc_steps: 200
+video_fps: 60
+swap_start_goal: true
+# start_qpos: null
+# goal_qpos: null
+# start_qpos: [0.146451935172081, -0.7491843104362488]
+# goal_qpos: [2.4196903705596924, -0.9535070657730103]
+# start_qpos: [0.1, -0.5]
+# goal_qpos: [2.42, -0.95]
+# start_qpos: [3.102563, -2.35]
+# goal_qpos : [0.370098, -2.092896]
+goal_threshold: 0.05
+latent_goal_threshold: 0.05
+q_stage: 0.005
+q_terminal: 5.0
+q_stage_delta: 1.0
+q_terminal_delta: 0.9
+r_control: 0.1
+r_control_per_action: null
+# r_control_per_action: [0.5, 1.0]
+u_abs_limit: 2.0
+state_abs_limit: 5.0
+state_delta_abs_limit: 0.5
+enable_obstacle: true
+obstacle_model_path: reacher/models/obs_games/66db0513495b0b32/model.pt
+obstacle_margin: 0.0
+obstacle_penalty_weight: 1000.0
+use_latent_ellipsoid_constraint: True
+latent_ellipsoid_path: reacher/eval/latent_ellipsoid/latent_ellipsoid.pt
+latent_ellipsoid_margin: 0.0
+mppi_samples: 512
+mppi_update_iter: 5
+mppi_reward_weight: 20.0
+mppi_noise_level: 0.15
+mppi_beta_filter: 0.7
+mppi_stage_weight: 0.005
+mppi_terminal_weight: 100.0
+mppi_delta_weight: 1.0
+mppi_r_control: 0.01
+# mppi_r_control_per_action: null
+# mppi_r_control_per_action: [0.001, 0.1]
+mppi_state_box_penalty: 2.0
+mppi_ellipsoid_penalty_weight: 0.0

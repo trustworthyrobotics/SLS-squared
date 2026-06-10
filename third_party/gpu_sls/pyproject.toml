@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpu_sls"
+version = "0.1.0"
+description = "GPU-SLS with Jax"
+authors = [{name="Jeffrey Fang"}]
+requires-python = ">=3.11"
+
+dependencies = [
+    "pycddlib",
+    # "jax[cuda12]==0.8.1",
+    "jax==0.8.1",
+    "mujoco",
+    "mujoco-mjx",
+    "gym-quadruped",
+    "trajax @ git+https://github.com/google/trajax",
+    "numpy",
+    "scipy",
+    "matplotlib",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

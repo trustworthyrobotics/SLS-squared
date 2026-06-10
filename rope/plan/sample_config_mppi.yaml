@@ -1,0 +1,46 @@
+# sls_config.yaml
+q_learned: 0.5 # 5.688706 # Update this with the value from conformal_config.json
+# model_dir: "reacher/models/mlpdyn_ft_7"
+# error_model_ckpt: "error_calib/error_model/lightning_logs/version_8/checkpoints/best-error-model-epoch=2396.ckpt"
+model_dir: "rope/models/mlpdyn_noshadow_ft_3"
+obstacle_model_path: "rope/models/obs_net_sm_model/a8c9d715613d8f57/model.pt"
+constant_covariance_path: "rope/eval/fixed_error_covariance_new_model.pt"
+# constant_covariance_path: "rope/eval/fixed_error_covariance_augment.pt"
+error_model_ckpt: "rope/models/err_pred_logs/rope_experiment/version_7/checkpoints/best-error-model-epoch=3781.ckpt"
+
+
+enable_obstacle: True
+obstacle_margin: 0.0
+obstacle_penalty_weight: 0.0
+action_stats_dataset_path: "rope/data/test_data_noshadow/rope_random_cubic_spline.h5"
+
+use_constant_covariance: True
+dataset_path: "rope/plan/new_random_endpoints_pairs.pt"
+out_dir: "rope/plan/sls_mppi_conformal"
+device: "auto"
+horizon: 10
+mppi_horizon: 15
+mppi_samples: 2048
+mppi_update_iter: 6
+mppi_reward_weight: 25.0
+mppi_noise_level: 0.2
+mppi_beta_filter: 0.65
+max_mpc_steps: 100
+video_fps: 50
+episode_idx: 7 # 6588  # 6560 6534 6588# Use a number (e.g. 5) or null for random
+seed: 42
+q_stage: 0.1
+q_terminal: 5.0
+r_control: 0.2
+use_latent_ellipsoid_constraint: True
+latent_ellipsoid_path: "rope/eval/latent_ellipsoid_noshadow/latent_ellipsoid.pt"
+# latent_ellipsoid_path: "rope/eval/latent_ellipsoid_noshadow_augment/latent_ellipsoid.pt"
+latent_ellipsoid_margin: 0.0
+# mppi_stage_weight: 10.0
+# mppi_terminal_weight: 500.0
+# mppi_state_box_penalty: 250.0
+mppi_stage_weight: 0.005
+mppi_terminal_weight: 10.0
+mppi_r_control: 1.0
+mppi_state_box_penalty: 0.2
+mppi_ellipsoid_penalty_weight: 20

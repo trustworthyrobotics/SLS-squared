@@ -1,0 +1,56 @@
+<mujoco model="lab_scene">
+  <statistic center="0 0 0.9" extent="2.5"/>
+
+  <option gravity="0 0 -9.81" timestep="0.002" integrator="implicitfast"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="-120" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge"
+      rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <model name="kuka_iiwa_model" file="kuka_iiwa_14/iiwa14_base.xml"/>
+  </asset>
+
+  <worldbody>
+    <light name="main_light" pos="0 0 2.5" dir="0 0 -1"/>
+
+    <geom name="ground" type="plane" size="3 3 0.1" material="groundplane"/>
+
+    <geom name="table"
+          type="box"
+          pos="0 0 0.375"
+          size="0.50 0.75 0.375"
+          rgba="0.75 0.75 0.75 1"/>
+
+    <geom name="arm1_plate"
+          type="box"
+          pos="0.40 0.65 0.75645"
+          size="0.10 0.10 0.00645"
+          rgba="0.3 0.3 0.3 1"/>
+
+    <body name="arm1_mount" pos="0.40 0.65 0.7629" euler="0 0 180">
+      <attach model="kuka_iiwa_model" body="base" prefix="arm1_"/>
+    </body>
+
+    <geom name="arm2_plate"
+          type="box"
+          pos="0.40 -0.65 0.75645"
+          size="0.10 0.10 0.00645"
+          rgba="0.3 0.3 0.3 1"/>
+
+    <body name="arm2_mount" pos="0.40 -0.65 0.7629" euler="0 0 180">
+      <attach model="kuka_iiwa_model" body="base" prefix="arm2_"/>
+    </body>
+
+    <camera name="ceiling_cam"
+            mode="fixed"
+            pos="0 0 3.0"
+            xyaxes="1 0 0  0 1 0"/>
+  </worldbody>
+</mujoco>
