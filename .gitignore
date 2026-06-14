@@ -40,3 +40,4 @@ ogbench_cube/plan/sls_mpc_conformal
 !docs/assets/images/*.png
 
 reference_files/
+abridge/
