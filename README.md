@@ -2,7 +2,7 @@
 
 This repository contains code for **SLS2**, a framework for safe feedback planning from pixels with learned latent world models, conformal calibration, and robust MPC via System Level Synthesis (SLS).
 
-**Links:** [Website](https://trustworthyrobotics.github.io/SLS-squared/) | [Paper](https://trustworthyrobotics.github.io/SLS-squared/assets/paper/SLS2_paper.pdf)
+**Links:** [Website](https://trustworthyrobotics.github.io/SLS-squared/) | [Paper](https://trustworthyrobotics.github.io/SLS-squared/assets/paper/SLS2_paper.pdf) | [Video](https://www.youtube.com/watch?v=3sYYNSQqwSQ)
 
 The method follows the paper draft _Pixels to Proofs: Probabilistically-Safe Control in Latent World Models via Conformalized Robust MPC_. At a high level, SLS2:
 
